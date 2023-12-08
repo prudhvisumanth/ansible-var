@@ -1,0 +1,13 @@
+--- # CONDITIONS
+- hosts: dev[1]
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: installing a apache server for debian family
+      command: apt-get-y install apache2
+      when: ansible_os_family== "Debian"
+    - name: installing a apache server for redhat family
+      command: yum install apache -y
+      when: ansible_os_family== "RedHat"
+...
