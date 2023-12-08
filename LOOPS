@@ -1,0 +1,14 @@
+--- #LOOPS
+- hosts: ops[0]
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: adding list of users
+      user: name='{{item}}' state=present
+      with_items:
+            - nikitha
+            - deekshita
+            - venkat
+            - chintu
+            - snati
